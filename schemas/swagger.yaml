@@ -1,0 +1,739 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: Star Wars API
+servers:
+  - url: "http://localhost:3000/"
+paths:
+  /api/films:
+    get:
+      summary: Récupère tous les films
+      tags:
+        - Films
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée un nouveau film
+      tags:
+        - Films
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+      responses:
+        '201':
+          description: Film créé avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/films/{id}:
+    get:
+      summary: Récupère un film par ID
+      tags:
+        - Films
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Film non trouvé
+
+    put:
+      summary: Met à jour un film par ID
+      tags:
+        - Films
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+      responses:
+        '200':
+          description: Film mis à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Film non trouvé
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime un film par ID
+      tags:
+        - Films
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Film supprimé avec succès
+        '404':
+          description: Film non trouvé
+        '500':
+          description: Erreur serveur
+  /api/people:
+    get:
+      summary: Récupère toutes les personnes
+      tags:
+        - People
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée une nouvelle personne
+      tags:
+        - People
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          description: Personne créée avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/people/{id}:
+    get:
+      summary: Récupère une personne par ID
+      tags:
+        - People
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Personne non trouvée
+
+    put:
+      summary: Met à jour une personne par ID
+      tags:
+        - People
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Personne mise à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Personne non trouvée
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime une personne par ID
+      tags:
+        - People
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Personne supprimée avec succès
+        '404':
+          description: Personne non trouvée
+        '500':
+          description: Erreur serveur
+  /api/planets:
+    get:
+      summary: Récupère toutes les planètes
+      tags:
+        - Planets
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée une nouvelle planète
+      tags:
+        - Planets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+      responses:
+        '201':
+          description: Planète créée avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/planets/{id}:
+    get:
+      summary: Récupère une planète par ID
+      tags:
+        - Planets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Planète non trouvée
+
+    put:
+      summary: Met à jour une planète par ID
+      tags:
+        - Planets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+      responses:
+        '200':
+          description: Planète mise à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Planète non trouvée
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime une planète par ID
+      tags:
+        - Planets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Planète supprimée avec succès
+        '404':
+          description: Planète non trouvée
+        '500':
+          description: Erreur serveur
+  /api/species:
+    get:
+      summary: Récupère toutes les espèces
+      tags:
+        - Species
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée une nouvelle espèce
+      tags:
+        - Species
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Species'
+      responses:
+        '201':
+          description: Espèce créée avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/species/{id}:
+    get:
+      summary: Récupère une espèce par ID
+      tags:
+        - Species
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Espèce non trouvée
+
+    put:
+      summary: Met à jour une espèce par ID
+      tags:
+        - Species
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Species'
+      responses:
+        '200':
+          description: Espèce mise à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Espèce non trouvée
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime une espèce par ID
+      tags:
+        - Species
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Espèce supprimée avec succès
+        '404':
+          description: Espèce non trouvée
+        '500':
+          description: Erreur serveur
+  /api/starships:
+    get:
+      summary: Récupère tous les vaisseaux spatiaux
+      tags:
+        - Starship
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée un nouveau vaisseau spatial
+      tags:
+        - Starship
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Starship'
+      responses:
+        '201':
+          description: Vaisseau spatial créé avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/starships/{id}:
+    get:
+      summary: Récupère un vaisseau spatial par ID
+      tags:
+        - Starship
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Vaisseau spatial non trouvé
+
+    put:
+      summary: Met à jour un vaisseau spatial par ID
+      tags:
+        - Starship
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Starship'
+      responses:
+        '200':
+          description: Vaisseau spatial mis à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Vaisseau spatial non trouvé
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime un vaisseau spatial par ID
+      tags:
+        - Starship
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Vaisseau spatial supprimé avec succès
+        '404':
+          description: Vaisseau spatial non trouvé
+        '500':
+          description: Erreur serveur
+  /api/vehicles:
+    get:
+      summary: Récupère tous les véhicules
+      tags:
+        - Vehicle
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Crée un nouveau véhicule
+      tags:
+        - Vehicle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vehicle'
+      responses:
+        '201':
+          description: Véhicule créé avec succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur serveur
+
+  /api/vehicles/{id}:
+    get:
+      summary: Récupère un véhicule par ID
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Véhicule non trouvé
+
+    put:
+      summary: Met à jour un véhicule par ID
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vehicle'
+      responses:
+        '200':
+          description: Véhicule mis à jour avec succès
+        '400':
+          description: Requête invalide
+        '404':
+          description: Véhicule non trouvé
+        '500':
+          description: Erreur serveur
+
+    delete:
+      summary: Supprime un véhicule par ID
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Véhicule supprimé avec succès
+        '404':
+          description: Véhicule non trouvé
+        '500':
+          description: Erreur serveur
+
+components:
+  schemas:
+    Film:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            title:
+              type: string
+            description:
+              type: string
+            type:
+              type: string
+            properties:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                episode_id:
+                  type: string
+                opening_crawl:
+                  type: string
+                director:
+                  type: string
+                producer:
+                  type: string
+                release_date:
+                  type: string
+                characters:
+                  type: array
+                  items:
+                    type: string
+                planets:
+                  type: array
+                  items:
+                    type: string
+                starships:
+                  type: array
+                  items:
+                    type: string
+                vehicles:
+                  type: array
+                  items:
+                    type: string
+                species:
+                  type: array
+                  items:
+                    type: string
+                url:
+                  type: string
+    Person:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+            gender:
+              type: string
+            skin_color:
+              type: string
+            hair_color:
+              type: string
+            height:
+              type: string
+            eye_color:
+              type: string
+            mass:
+              type: string
+            homeworld:
+              type: number
+            birth_year:
+              type: string
+    Planet:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+            diameter:
+              type: string
+            rotation_period:
+              type: string
+            orbital_period:
+              type: string
+            gravity:
+              type: string
+            population:
+              type: string
+            climate:
+              type: string
+            terrain:
+              type: string
+            surface_water:
+              type: string
+            films:
+              type: string
+            residents:
+              type: string
+            url:
+              type: string
+              format: uri
+    Species:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+            classification:
+              type: string
+            designation:
+              type: string
+            average_height:
+              type: string
+            average_lifespan:
+              type: string
+            hair_colors:
+              type: string
+            skin_colors:
+              type: string
+            eye_colors:
+              type: string
+            homeworld:
+              type: string
+            language:
+              type: string
+            people:
+              type: string
+            films:
+              type: string
+            url:
+              type: string
+              format: uri
+    Starship:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+            model:
+              type: string
+            starship_class:
+              type: string
+            manufacturer:
+              type: string
+            cost_in_credits:
+              type: string
+            length:
+              type: string
+            crew:
+              type: string
+            passengers:
+              type: string
+            max_atmosphering_speed:
+              type: string
+            hyperdrive_rating:
+              type: string
+            MGLT:
+              type: string
+            cargo_capacity:
+              type: string
+            consumables:
+              type: string
+            films:
+              type: string
+            pilots:
+              type: string
+            url:
+              type: string
+              format: uri
+    Vehicle:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            name:
+              type: string
+            model:
+              type: string
+            vehicle_class:
+              type: string
+            manufacturer:
+              type: string
+            cost_in_credits:
+              type: string
+            length:
+              type: string
+            crew:
+              type: string
+            passengers:
+              type: string
+            max_atmosphering_speed:
+              type: string
+            cargo_capacity:
+              type: string
+            consumables:
+              type: string
+            films:
+              type: string
+            pilots:
+              type: string
+            url:
+              type: string
+              format: uri
